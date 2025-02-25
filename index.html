@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚠️ Phone Virus Detected! ⚠️</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: lime;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .alert-box {
+            border: 3px solid red;
+            padding: 20px;
+            font-size: 24px;
+            background: black;
+            animation: glitch 0.1s infinite alternate;
+        }
+        @keyframes glitch {
+            0% { transform: translate(2px, 2px); color: red; }
+            100% { transform: translate(-2px, -2px); color: lime; }
+        }
+        .warning {
+            font-size: 30px;
+            color: red;
+            margin-top: 20px;
+            animation: blink 0.5s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .jumpscare {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url(images/jumpscare.jpg) center/cover;
+            z-index: 1000;
+        }
+        .exit-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="alert-box">
+        <h1>⚠️ CRITICAL SYSTEM ERROR! ⚠️</h1>
+        <p>Virus detected! Your phone is infected.</p>
+        <p>Do not close this page!</p>
+    </div>
+    <div class="warning">Scanning for malware...</div>
+    <button class="exit-btn">EXIT</button>
+    <div class="jumpscare" id="jumpscare"></div>
+    
+    <script>
+        function startVirusPrank() {
+            setInterval(() => { navigator.vibrate(1000); }, 3000);
+            setInterval(() => {
+                document.body.style.backgroundColor = ["#111", "#300"][Math.floor(Math.random() * 2)];
+            }, 500);
+            
+            setTimeout(() => {
+                document.getElementById('jumpscare').style.display = 'block';
+                let scream = new Audio('https://www.myinstants.com/media/sounds/scream.mp3');
+                scream.play().catch(error => console.log('Audio playback failed:', error));
+            }, 5000);
+        }
+        window.onload = startVirusPrank;
+    </script>
+</body>
+</html>
