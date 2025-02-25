@@ -47,7 +47,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: url(images/jumpscare.jpg) center/cover;
+            background: url('jumpscare.jpg') center/cover;
             z-index: 1000;
         }
         .exit-btn {
@@ -79,9 +79,12 @@
             }, 500);
             
             setTimeout(() => {
-                document.getElementById('jumpscare').style.display = 'block';
-                let scream = new Audio('https://www.myinstants.com/media/sounds/scream.mp3');
-                scream.play().catch(error => console.log('Audio playback failed:', error));
+    let scream = new Audio('https://www.myinstants.com/media/sounds/scream.mp3');
+    scream.play().catch(error => console.log('Audio playback failed:', error));
+    setTimeout(() => {
+        document.getElementById('jumpscare').style.display = 'block';
+    }, 1000);
+}, 5000);
             }, 5000);
         }
         window.onload = startVirusPrank;
